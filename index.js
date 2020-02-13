@@ -188,13 +188,14 @@ function getCarInfoById(inventory, id) {
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
  */
 function sortCarInventory(inventory) {
-  return inventory.sort(function(a,b){
+  return inventory.sort(function(a, b) {
     if (a.car_model > b.car_model) {
       return 1;
-    } if (a.car_model < b.car_model) {
+    }
+    if (a.car_model < b.car_model) {
       return -1;
     }
-  })
+  });
 }
 
 /**
@@ -230,10 +231,10 @@ function getOlderCars(inventory, year) {
   const carArr = [];
   for (let i in inventory) {
     if (inventory[i].car_year <= year) {
-      carArr.push(inventory[i])
+      carArr.push(inventory[i]);
     }
-    return carArr;
   }
+  return carArr;
 }
 
 /**
@@ -247,8 +248,19 @@ function getOlderCars(inventory, year) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
  */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  const carsArr = [];
+  for (let i in inventory) {
+    if (
+      inventory[i].car_make === "Audi" ||
+      "Mercedes-Benz" ||
+      "Volkswagen" ||
+      "BMW"
+    ) {
+      carsArr.push(inventory[i]);
+    }
+  }
+  return carsArr;
 }
 
 /**
