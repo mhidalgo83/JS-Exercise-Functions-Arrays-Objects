@@ -251,13 +251,9 @@ function getOlderCars(inventory, year) {
 function getGermanCars(inventory) {
   const carsArr = [];
   for (let i in inventory) {
-    if (
-      inventory[i].car_make === "Audi" ||
-      "Mercedes-Benz" ||
-      "Volkswagen" ||
-      "BMW"
-    ) {
-      carsArr.push(inventory[i]);
+    const carMake = inventory[i].car_make;
+    if (carMake === "Audi" || carMake === "BMW" || carMake === "Mercedes-Benz" || carMake === "Volkswagen") {
+      carsArr.push(inventory[i])
     }
   }
   return carsArr;
