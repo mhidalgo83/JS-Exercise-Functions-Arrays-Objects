@@ -40,9 +40,9 @@ function addNumbers(num1, num2) {
  */
 function makePersonObject(id, name, email) {
   return {
-    id: id,
-    name: name,
-    email: email
+    id,
+    name,
+    email
   };
 }
 
@@ -78,12 +78,12 @@ function getName(object) {
  */
 function makeSmartPerson(name) {
   return {
-    name: name,
+    name,
     sum: function(num1, num2) {
       return num1 + num2;
     },
     speak: function() {
-      return `Hello, my name is ${this.name}.`;
+      return `Hello, my name is ${name}.`;
     }
   };
 }
@@ -174,9 +174,13 @@ function getLastCarInfo(inventory) {
  * it will return `This is a Lincoln Navigator`.
  */
 function getCarInfoById(inventory, id) {
-  return `This is a ${inventory[id - 1].car_make} ${
-    inventory[id - 1].car_model
-  }`;
+  let lastCar;
+  for (let i = 0; i < inventory.length; i++) {
+    if (id === inventory[i].id) {
+      lastCar = inventory[i];
+      return `This is a ${lastCar.car_make} ${lastCar.car_model}`;
+    }
+  }
 }
 
 /**
@@ -252,8 +256,13 @@ function getGermanCars(inventory) {
   const carsArr = [];
   for (let i in inventory) {
     const carMake = inventory[i].car_make;
-    if (carMake === "Audi" || carMake === "BMW" || carMake === "Mercedes-Benz" || carMake === "Volkswagen") {
-      carsArr.push(inventory[i])
+    if (
+      carMake === "Audi" ||
+      carMake === "BMW" ||
+      carMake === "Mercedes-Benz" ||
+      carMake === "Volkswagen"
+    ) {
+      carsArr.push(inventory[i]);
     }
   }
   return carsArr;
@@ -277,9 +286,15 @@ function getGermanCars(inventory) {
  *   return num * 2
  * }
  */
-const sum = (a,b) => {return a*b}; //code here
-const addFive = num => {return num + 5};//code here
-const argTimesTwo = num => {return num * 2};//code here
+const sum = (a, b) => {
+  return a * b;
+}; //code here
+const addFive = num => {
+  return num + 5;
+}; //code here
+const argTimesTwo = num => {
+  return num * 2;
+}; //code here
 
 /**
  * ### Challenge `carMaker`
@@ -302,7 +317,7 @@ function carMaker(num) {
       this.odometer = odometer;
       return this.odometer;
     }
-  }
+  };
 }
 
 /// ////// END OF CHALLENGE /////////
